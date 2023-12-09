@@ -1,2 +1,10 @@
 # DSA System Design
- Data Structures and Algorithm, LLD, HLD
+Data Structures and Algorithm, LLD, HLD
+
+# Problems
+
+# Data Structures
+
+# Algorithms
+
+#

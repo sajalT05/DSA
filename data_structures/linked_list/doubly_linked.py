@@ -1,4 +1,4 @@
-""" singly linked. """
+""" doubly linked. """
 import dataclasses
 
 
@@ -10,15 +10,16 @@ class Node:
     """
     def __init__(self,data):
         """
-        assign data and next node
+        assign data and prev & next node
         """
         self.data = data
         self.next = None
+        self.prev = None
 
 
 
 @dataclasses.dataclass
-class SinglyLinkedList:
+class DoublyLinkedList:
     """
     create/manage
     """
@@ -38,11 +39,11 @@ class SinglyLinkedList:
             # iterate till end -> temp-data is not none
             current_node = current_node.next
 
-        return "Linked List Traversed."
+        return "Linked List Traversal."
 
 
     def add_node(self,node_data):
-        """ add node after head. """
+        """ add node to after head. """
         # create node
         new_node = Node(data=node_data)
         # add node
@@ -54,10 +55,12 @@ class SinglyLinkedList:
             prev_second_node = self.head.next
             self.head.next = new_node
             new_node.next = prev_second_node
+            new_node.prev = self.head
 
         return f"Node {new_node} Added after head."
 
-    def appen_node(self,node_data):
+
+    def append_node(self,node_data):
         """ add node at end. """
         # create node
         new_node = Node(data=node_data)
@@ -71,6 +74,7 @@ class SinglyLinkedList:
                 if not current_node.next:
                     # if current-node has no next-node
                     current_node.next = new_node
+                    new_node.prev = current_node
                 else:
                     continue
 
@@ -78,7 +82,7 @@ class SinglyLinkedList:
 
 
     def insert_head(self,node_data):
-        """ Insert a Node at the Front/Beginning. """
+        """ Insert a Node at the Beginning. """
         # create node
         new_node = Node(data=node_data)
         # add node
@@ -87,7 +91,9 @@ class SinglyLinkedList:
             self.head = new_node
         else:
             # point original head to new node
-            new_node.next = self.head
+            head_node = self.head
+            new_node.next = head_node
+            head_node.prev = new_node
             # make new node as head
             self.head = new_node
 
@@ -99,10 +105,11 @@ class SinglyLinkedList:
         # create node
         new_node = Node(data=node_data)
         # assign prev-node-next to new-node-next
-        new_node.next = prev_node.next
-        # point prev-node to new-node
-        prev_node.next = new_node
+        prev_node_next_node = prev_node.next
+        new_node.next = prev_node_next_node
+        new_node.prev = prev_node
 
+        
         return f"Node {new_node} Added after {prev_node}."
 
 

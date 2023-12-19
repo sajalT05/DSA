@@ -1,4 +1,4 @@
-""" singly linked. """
+""" singly linked list. """
 import dataclasses
 
 
@@ -57,7 +57,7 @@ class SinglyLinkedList:
 
         return f"Node {new_node} Added after head."
 
-    def appen_node(self,node_data):
+    def append_node(self,node_data):
         """ add node at end. """
         # create node
         new_node = Node(data=node_data)

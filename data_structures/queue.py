@@ -14,25 +14,36 @@ class Queue:
         """
         self.queue = []
 
+
     def check_stack_empty(self):
         """ check if stack is empty. """
-        stack_length = len(self.stack)
-        if stack_length!=0:
-            return stack_length
-        return 0
+        queue_length = len(self.queue)
+        if queue_length!=0:
+            return queue_length
+        return None
+
 
     def push_item(self,data):
-        """ add item to stack's top. """
-        return self.stack.append(data)
+        """ add item to queue's top. """
+        return self.queue.append(data)
+
 
     def pop_item(self):
-        """ remove ite from stack's top. """
-        if self.check_stack_empty()!=0:
-            return self.stack.pop()
-        return "Empty Stack."
+        """ remove ite from queue's top. """
+        if self.check_stack_empty() is not None:
+            return self.queue.pop()
+        return "Empty queue."
+
 
     def top_item(self):
-        """ return top item of stack. """
-        if self.check_stack_empty()!=0:
-            return self.stack[-1]
-        return "Empty Stack."
+        """ return top item of queue. """
+        if self.check_stack_empty() is not None:
+            return self.queue[-1]
+        return "Empty queue."
+
+
+    def last_item(self):
+        """ return last item of queue. """
+        if self.check_stack_empty() is not None:
+            return self.queue[0]
+        return "Empty queue."
